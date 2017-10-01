@@ -9,7 +9,7 @@ import java.net.URL;
 import org.acegisecurity.userdetails.UserDetails;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.jenkinsci.plugins.api.BitbucketUser.BitbucketUserResponce;
+import org.jenkinsci.plugins.api.BitbucketUser.BitbucketUserResponse;
 import org.scribe.builder.ServiceBuilder;
 import org.scribe.model.OAuthRequest;
 import org.scribe.model.Response;
@@ -58,7 +58,7 @@ public class BitbucketApiService {
         Response response = request.send();
         String json = response.getBody();
         Gson gson = new Gson();
-        BitbucketUserResponce userResponce = gson.fromJson(json, BitbucketUserResponce.class);
+        BitbucketUserResponse userResponce = gson.fromJson(json, BitbucketUserResponse.class);
         if (userResponce != null) {
             return userResponce.user;
         } else {
@@ -68,12 +68,12 @@ public class BitbucketApiService {
 
     public UserDetails getUserByUsername(String username) {
         InputStreamReader reader = null;
-        BitbucketUserResponce userResponce = null;
+        BitbucketUserResponse userResponce = null;
         try {
             URL url = new URL(API_ENDPOINT + "users/" + username);
             reader = new InputStreamReader(url.openStream(), "UTF-8");
             Gson gson = new Gson();
-            userResponce = gson.fromJson(reader, BitbucketUserResponce.class);
+            userResponce = gson.fromJson(reader, BitbucketUserResponse.class);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {

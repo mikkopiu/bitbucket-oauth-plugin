@@ -10,7 +10,7 @@ import hudson.security.SecurityRealm;
 
 public class BitbucketUser implements UserDetails {
 
-    public class BitbucketUserResponce {
+    public class BitbucketUserResponse {
         public BitbucketUser user;
     }
 
