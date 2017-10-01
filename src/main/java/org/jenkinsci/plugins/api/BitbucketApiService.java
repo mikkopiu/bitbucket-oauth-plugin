@@ -22,7 +22,7 @@ import com.google.gson.Gson;
 
 public class BitbucketApiService {
 
-    private static final String API_ENDPOINT = "https://api.bitbucket.org/1.0/";
+    private static final String API_ENDPOINT = "https://api.bitbucket.org/2.0/";
 
     private OAuthService service;
 

@@ -1,6 +1,7 @@
 package org.jenkinsci.plugins.api;
 
 import org.acegisecurity.GrantedAuthority;
+import org.acegisecurity.userdetails.User;
 import org.acegisecurity.userdetails.UserDetails;
 import org.apache.commons.lang.StringUtils;
 
@@ -15,15 +16,15 @@ public class BitbucketUser implements UserDetails {
     }
 
     public String username = StringUtils.EMPTY;
-    @SerializedName("first_name")
-    public String firstName;
-    @SerializedName("last_name")
-    public String lastName;
-    @SerializedName("is_team")
-    public boolean isTeam;
-    public String avatar;
-    @SerializedName("resource_uri")
-    public String resourceUri;
+    @SerializedName("display_name")
+    public String displayName;
+    public BitbucketLinks links;
+    public String website;
+    public String uuid;
+    @SerializedName("is_staff")
+    public Boolean isStaff;
+    @SerializedName("account_id")
+    public String accountId;
 
     public BitbucketUser() {
         super();
@@ -65,3 +66,4 @@ public class BitbucketUser implements UserDetails {
     }
 
 }
+
